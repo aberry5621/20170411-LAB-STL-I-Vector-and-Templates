@@ -52,9 +52,19 @@ int main() {
     std::cout << "Random populate alpha vector with chars\n";
     
     // gen random alpha
-
-    for (int i = 0; i < 20; i++) {
-        alpha[i] = get_random_char();
+    int placed_chars = 0;
+    while (placed_chars < 20) {
+        char rand_char =  get_random_char();
+        bool char_duplicate = false;
+        // check to see if the rand char is in the vector already
+        for (int i = 0; i < placed_chars; i++) {
+            if (alpha[i] == rand_char) {
+                char_duplicate = true;
+            }
+        }
+        if ( ! char_duplicate) {
+            alpha[placed_chars++] = rand_char;
+        }
     }
     
     std::cout << "Vector capacity: " << alpha.capacity() << std::endl;
