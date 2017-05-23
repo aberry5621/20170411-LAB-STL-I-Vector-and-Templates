@@ -143,15 +143,12 @@ void swapValue(T objA, T objB) {
 
 class MyClass {
 public:
-    MyClass() {
-        int new_data_mem = * new int;
-        m_data = &new_data_mem;
-    };
+    MyClass(){};
     MyClass(int p_data) { m_data = 0;};
     
     // overloaded copy constructor
-    MyClass(const MyClass &p_myclass_obj) {
-        this->m_data = p_myclass_obj.m_data;
+    MyClass(const MyClass *p_myclass_obj) {
+        this->m_data = p_myclass_obj->m_data;
     };
     
     // overloaded assignment operator
@@ -165,8 +162,6 @@ public:
 int main() {
     
     std::cout << "Ex 2\n";
-    
-    MyClass obj0 = * new MyClass();
     
     MyClass obj1(10);
     MyClass obj2(20);
@@ -182,17 +177,10 @@ int main() {
     
     std::cout << "swap time..\n";
     
-    int a = 1;
-    int b = 2;
-    
-    swapValue(a, b);
     
     //
-    obj0 = obj1;
-    obj1 = obj2;
-    obj2 = obj0;
     // swap back?
-    // swapValue(obj1, obj2);
+    swapValue(obj1, obj2);
     
     std::cout << "data check..\n";
     
